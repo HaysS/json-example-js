@@ -1,0 +1,16 @@
+{
+  "shoppingList": [
+    {
+      "itemName":"Banana",
+      "price": 1.00
+    },
+    {
+      "itemName":"Coconut",
+      "price": 2.50
+    },
+    {
+      "itemName":"Cold pops",
+      "price": 3.50
+    }
+  ]
+}
