@@ -7,53 +7,61 @@
   <body>
     <ul id="list"></ul>
     <script>
-      var groceryShopper = {
-        name: "Hays Stanford",
-        age: 5000,
-        children:["J-rod", "Musafa"]
-      }
+      // var groceryShopper = {
+      //   name: "Hays Stanford",
+      //   age: 5000,
+      //   children:["J-rod", "Musafa"]
+      // }
 
-      groceryShopper = JSON.stringify(groceryShopper);
-      groceryShopper = JSON.parse(groceryShopper);
+      // groceryShopper = JSON.stringify(groceryShopper);
+      // groceryShopper = JSON.parse(groceryShopper);
 
-      var shoppingList = [
-        {
-          itemName:"Banana",
-          price: 1.00
-        },
-        {
-          itemName:"Coconut",
-          price: 2.50
-        },
-        {
-          itemName:"Cold pops",
-          price: 3.50
-        }
-      ];
+      // console.log("Here is the data enclosed in groceryShopper", groceryShopper)
 
-      //console.log(shoppingList[1].itemName);
-      var output = '';
-      for(var i = 0;i < shoppingList.length;i++){
-        //console.log(shoppingList[i].itemName);
-        output += '<li>'+shoppingList[i].itemName+'</li>';
-      }
-      document.getElementById('list').innerHTML = output;
+      // var shoppingList = [
+      //   {
+      //     itemName:"Banana",
+      //     price: 1.00
+      //   },
+      //   {
+      //     itemName:"Coconut",
+      //     price: 2.50
+      //   },
+      //   {
+      //     itemName:"Cold pops",
+      //     price: 3.50
+      //   }
+      // ];
 
-      // var xhttp = new XMLHttpRequest();
-      // xhttp.onreadystatechange = function() {
-      //     if (this.readyState == 4 && this.status == 200) {
-      //       var response = JSON.parse(xhttp.responseText);
-      //       var people = response.people;
+      // var output = '';
 
-      //       var output = '';
-      //       for(var i = 0;i < people.length;i++){
-      //         output += '<li>'+people[i].name+'</li>';
-      //       }
-      //       document.getElementById('people').innerHTML = output;
-      //     }
-      // };
-      // xhttp.open("GET", "items.json", true);
-      // xhttp.send();
+      // for(var i = 0; i < shoppingList.length; i++) {
+      //   console.log(shoppingList[i].itemName);
+      //   output += '<li>'+shoppingList[i].itemName+'</li>';
+      // }
+
+      // document.getElementById('list').innerHTML = output;
+
+      var xhttp = new XMLHttpRequest();
+
+      xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+
+            var response = JSON.parse(xhttp.responseText);
+            var shoppingList = response.shoppingList;
+            console.log(shoppingList)
+
+            var output = '';
+            for(var i = 0; i < shoppingList.length; i++){
+              output += '<li>'+shoppingList[i].itemName+'</li>';
+            }
+
+            document.getElementById('list').innerHTML = output;
+          }
+      };
+
+      xhttp.open("GET", "shoppingList.json", true);
+      xhttp.send();
 
     </script>
   </body>
